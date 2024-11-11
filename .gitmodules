@@ -1,0 +1,9 @@
+[submodule "esp32-llm"]
+	path = esp32-llm
+	url = https://github.com/jake-g/esp32-llm.git
+[submodule "llama2.c"]
+	path = llama2.c
+	url = https://github.com/karpathy/llama2.c
+[submodule "SAM"]
+	path = SAM
+	url = https://github.com/jake-g/SAM.git
