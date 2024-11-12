@@ -25,14 +25,34 @@ Project root for working with various forks and experiemnts for Micro LLM projec
   
 #### Papers
 * [NotebokeLM](https://notebooklm.google.com/notebook/06e729c9-b18f-4177-9e3b-858fa55d4775)
-* [TinyStories: How Small Can Language Models Be and Still Speak Coherent English?](https://arxiv.org/abs/2305.07759) (5-12-2023)
-  * [huggingface dataset](https://huggingface.co/datasets/roneneldan/TinyStories)
-* [The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits](https://arxiv.org/abs/2402.17764) (3-27-2024)
+  
+* LLMs
+  * [TinyStories: How Small Can Language Models Be and Still Speak Coherent English?](https://arxiv.org/abs/2305.07759) (5-12-2023)
+    * [huggingface dataset](https://huggingface.co/datasets/roneneldan/TinyStories)
+  * [The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits](https://arxiv.org/abs/2402.17764) (3-27-2024)
+  
+* Vocal Track Speech Synthesis
+  * Julius O. Smith III, "Physical audio signal processing for virtual musical instruments and audio effects." https://ccrma.stanford.edu/~jos/pasp/
+  * Story, Brad H. "A parametric model of the vocal tract area function for vowel and consonant simulation." The Journal of the Acoustical Society of America 117.5 (2005): 3231-3254.
+  * Lu, Hui-Ling, and J. O. Smith. "Glottal source modeling for singing voice synthesis." Proceedings of the 2000 International Computer Music Conference. 2000.
+  * Mullen, Jack. Physical modelling of the vocal tract with the 2D digital waveguide mesh. PhD thesis, University of York, 2006.
 
-
-
+#### Datasheets
+* Waveshare ESP32s3 [ESP32-S3FH4R2](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf) ([amazon](https://www.amazon.com/gp/product/B0CHYHGYRH?th=1))
+* Speech Synthesis
+  * [Votrax SC-01 Data Sheet](http://www.bitsavers.org/pdf/federalScrewWorks/Votrax_SC-01_Phoneme_Speech_Synthesizer_Data_Sheet_1980.pdf) (1980)
+  * [SAM](http://www.apple-iigs.info/newdoc/sam.pdf) (1982)
+  * [SP0256A-AL2 datasheet](bitsavers.org/components/gi/speech/General_Instrument_-_SP0256A-AL2_datasheet_(Radio_Shack_276-1784)_-_Apr1984.pdf) (1984)
+  * [SpeaknSpell 80](http://www.datamath.org/Speech/SpeaknSpell_80.htm) (1980)
 ## Notes:
 
+### Speech synth unsorted
+* imaginary.org/program/pink-trombone
+  * https://github.com/IMAGINARY/pink-trombone
+* ESP speech synth
+	* https://lucstechblog.blogspot.com/2022/11/talkie-part-1-esp32-speech-synthesiser.html
+	https://github.com/bobh/ESP32Talkie
+	* https://cdn-learn.adafruit.com/downloads/pdf/bringing-back-the-voice-of-speak-spell.pdf
 
 ### llama2.c models
 
@@ -49,6 +69,43 @@ For the sake of examples of smaller, from-scratch models, I trained a small mode
 
 You'll notice that the 110M model is equivalent to GPT-1 in size. Alternatively, this is also the smallest model in the GPT-2 series (`GPT-2 small`), except the max context length is only 1024 instead of 2048. The only notable changes from GPT-1/2 architecture is that Llama uses RoPE relatively positional embeddings instead of absolute/learned positional embeddings, a bit more fancy SwiGLU non-linearity in the MLP, RMSNorm instead of LayerNorm, bias=False on all Linear layers, and is optionally multiquery.
 
+### Classic Speech Synthesis Overview
+
+More details: [speech_synthesis_algorithms](https://pichenettes.github.io/mutable-instruments-documentation/tech_notes/speech_synthesis_algorithms/)
+
+**Votrax SC-01:**
+* **Date:** ~1978
+* **Technology:** Phoneme synthesis
+* **Sound:** Robotic, metallic
+* **Products:** MicroVox, Heathkit HERO 1
+* **Note:**  Votrax was originally Federal Screw Works, and their transition to speech synthesis was driven by discoveries related to an electric shaver project.
+* **Datasheet:** [Votrax SC-01 Datasheet](http://www.bitsavers.org/pdf/federalScrewWorks/Votrax_SC-01_Phoneme_Speech_Synthesizer_Data_Sheet_1980.pdf)
+
+
+**Texas Instruments TMS5100 (Speak & Spell aka Talkie):**
+* **Date:** ~1978
+* **Technology:** Linear Predictive Coding (LPC)
+* **Sound:** Clear, natural, childlike
+* **Products:** Speak & Spell
+* **Patent:** US4209844A  (related to LPC speech analysis/synthesis)
+* **Paper:**  Related research published earlier, for example:  "Linear prediction of speech: A tutorial," by J. Markel and A. Gray, Jr. (IEEE ASSP Magazine, 1976)
+* **Datasheet:** [SpeaknSpell 80](http://www.datamath.org/Speech/SpeaknSpell_80.htm)
+  
+**General Instrument SPO256-AL2:**
+* **Date:** ~1980
+* **Technology:** Allophone synthesis
+* **Sound:** Robotic, smoother than Votrax
+* **Products:** Speak & Math, various consumer products, sold by Radio Shack
+* **Patent:** US4196351A
+* **Datasheet:**  [SP0256A-AL2 datasheet](bitsavers.org/components/gi/speech/General_Instrument_-_SP0256A-AL2_datasheet_(Radio_Shack_276-1784)_-_Apr1984.pdf)
+
+**S.A.M. (Software Automatic Mouth):**
+* **Date:** ~1982
+* **Technology:** Software-based formant synthesis
+* **Sound:** Buzzy, nasal, more expressive than Votrax
+* **Products:** Software for Apple II computers
+* **Note:** Developed by Don't Ask Software (later Softalk).
+* **Datasheet:** [manual](https://github.com/discordier/sam/blob/master/docs/manual.md) [pdf](http://www.apple-iigs.info/newdoc/sam.pdf)
 ### SAM: Software Automatic Mouth - Tiny Speech Synthesizer
 
 Taken from original [README.md](https://github.com/vidarh/SAM/blob/master/README.md), also see [wikipedia](https://en.wikipedia.org/wiki/Software_Automatic_Mouth)
