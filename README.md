@@ -7,7 +7,7 @@ Project root for working with various forks and experiemnts for Micro LLM projec
 ### Project Links
 
 #### ESP-32 Code
-* my fork of [esp32-llm](https://github.com/jake-g/micro-llm)
+* my fork of [esp32-llm](https://github.com/jake-g/esp32-llm)
   * [esp32-llm](https://github.com/DaveBben/esp32-llm) original by Dave Bennet
   * [esp32-llm](https://github.com/mc9625/esp32-llm/) fork by mc9625
   * [esp32-llm](https://github.com/AIWintermuteAI/esp32-llm) fork by AIWintermuteAI
