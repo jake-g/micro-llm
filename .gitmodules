@@ -2,8 +2,13 @@
 	path = esp32-llm
 	url = https://github.com/jake-g/esp32-llm.git
 [submodule "llama2.c"]
-	path = llama2.c
+	path = third_party/llama2.c
 	url = https://github.com/karpathy/llama2.c
+	ignore = untracked
 [submodule "SAM"]
-	path = SAM
+	path = third_party/SAM
 	url = https://github.com/jake-g/SAM.git
+	ignore = untracked
+[submodule "tinyllm-training"]
+	path = tinyllm-training
+	url = http://192.168.0.56:3000/jk/tinyllm-training.git
